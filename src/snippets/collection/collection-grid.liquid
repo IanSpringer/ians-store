@@ -1,8 +1,11 @@
 <div class="collection-grid-wrap">
 	<div class="collection-grid">
-		<div class="collection-item" v-for="product in products">
+		<div class="collection-item" v-for="product in productsToShow" v-if="productsToShow.length">
 			<img v-bind:src="product.img" />
 			<h3>${ product.title  }</h3>
+		</div>
+		<div v-else>
+			No Matches
 		</div>
 	</div>
 </div>

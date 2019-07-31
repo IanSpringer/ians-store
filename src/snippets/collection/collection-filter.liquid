@@ -1,3 +1,15 @@
 <div class="collection-filters">
-	<button v-for="filter in filters" v-bind:value="filter">${ filter }</button>
+	<div class="filter-wrap color" v-if="colorFilters.length">
+		<label>Color</label>
+		<button class="filter-btn " v-bind:class="{'is-active': filter.isActive }" v-on:click="filterClick(filter) " v-for="filter in colorFilters" data-type="color" v-bind:value="filter.value">${ filter.value }</button>
+	</div>
+	<div class="filter-wrap shell" v-if="shellFilters.length">
+		<label>Shell</label>
+		<button class="filter-btn " v-bind:class="{'is-active': filter.isActive }" v-on:click="filterClick(filter) " v-for="filter in shellFilters" data-type="shell" v-bind:value="filter.value">${ filter.value }</button>
+	</div>
+	<div class="filter-wrap size" v-if="sizeFilters.length">
+		<label>Size</label>
+		<button class="filter-btn " v-bind:class="{'is-active': filter.isActive }" v-on:click="filterClick(filter) " v-for="filter in sizeFilters" data-type="size" v-bind:value="filter.value">${ filter.value } </button>
+	</div>
+	<button class="filter-reset" v-on:click="reset">Reset Filters</button>
 </div>
