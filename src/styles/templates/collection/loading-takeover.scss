@@ -1,0 +1,155 @@
+$lt-grey-warm: #c7c7c7;
+$brand--secondary: #8b2332;
+
+@keyframes fillRed {
+	0% {width: 0%; opacity: 1};
+	20% {width: 100%; opacity: 1};
+	40% {width: 100%; opacity: 1};
+	50% {width: 100%; opacity: 1};
+	60% {width: 100%; opacity: .5};
+	70% {width: 100%; opacity: 0};
+	100% {width: 100%; opacity: 0};
+}
+
+@keyframes flip {
+	0% {transform: translateY(0) rotate(0deg)};
+	20% {transform: translateY(0) rotate(0deg)};
+	30% {transform: translateY(-20px) rotate(0deg)};
+	80% {transform: translateY(-20px) rotate(1440deg)};
+	90% {transform: translateY(0px) rotate(1440deg)}
+	100% {transform: translateY(0px) rotate(1440deg)};
+}
+
+@keyframes shadow {
+	0% {width: 0; opacity: 0; box-shadow: -2px 48px 10px -13.3px rgba(0,0,0,0.5)};
+	20% {width: 142px; opacity: 1; box-shadow: -2px 48px 10px -13.3px rgba(0,0,0,0.5)};
+	30% {width: 142px;opacity: .8; box-shadow: -2px 48px 24px -13.3px rgba(0,0,0,0.3)};
+	80% {width: 142px;opacity: .8; box-shadow: -2px 48px 24px -13.3px rgba(0,0,0,0.3)};
+	90% {width: 142px;opacity: 1; box-shadow: -2px 48px 10px -13.3px rgba(0,0,0,0.5)};
+	100% {width: 142px; opacity: 0; box-shadow: -2px 48px 10px -13.3px rgba(0,0,0,0.5)} ;
+}
+
+@keyframes IEFlip {
+	0% {transform: rotate(0)}
+	50% {transform: rotate(720deg)}
+	100% {transform: rotate(720deg)}
+}
+
+.loading-takeover {
+	display: none;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	background-color: white;
+	z-index: 1000001;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	&.is-active {
+		display: flex;
+
+		.loading-takeover__triangle {
+			animation-name: flip;
+			animation-duration: 3.5s;
+			animation-timing-function: ease;
+			animation-iteration-count: infinite;
+			animation-fill-mode: forwards;
+
+			&:before {
+				animation-name: fillRed;
+				animation-duration: 3.5s;
+				animation-timing-function: ease;
+				animation-iteration-count: infinite;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+
+	.loading-takeover__triangle {
+		width: 45px;
+		height: 45px;
+		clip-path: polygon(0 0, 0% 100%, 100% 100%);
+		transform-origin: 50% 50%;
+		z-index: 2;
+		background-color: $lt-grey-warm;
+
+		&:before {
+			content: '';
+			display: block;
+			height: 100%;
+			width: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: $brand--secondary;
+		}
+
+	}
+
+	.loading-takeover__shadow {
+		position: relative;
+    width: 142px;
+    height: 39px;
+    z-index: 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+	    border-radius: 174px;
+	    background-color: transparent;
+	    display: block;
+	    box-shadow: -2px 48px 10px -13.3px rgba(0,0,0,0.5);
+	    transform: translateY(-70px);
+	    z-index: 1;
+			animation-name: shadow;
+			animation-duration: 3.5s;
+			animation-timing-function: ease;
+			animation-iteration-count: infinite;
+			animation-fill-mode: forwards;
+		}
+	}
+}
+
+.loading-takeover--ie  {
+	display: none;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	background-color: white;
+	z-index: 1000001;
+	align-items: center;
+	justify-content: center;
+
+	&.is-active {
+		display: flex;
+
+		.loading-takeover__triangle {
+			animation-name: IEFlip;
+			animation-duration: 3.5s;
+			animation-timing-function: ease;
+			animation-iteration-count: infinite;
+			animation-fill-mode: forwards;
+		}
+	}
+
+	.loading-takeover__triangle {
+		transform-origin: 50% 50%;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 200px 0 0 200px;
+		border-color: transparent transparent transparent $brand--secondary;
+	}
+}
+
+

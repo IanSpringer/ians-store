@@ -2,6 +2,11 @@
 
 	{
 			"title": {{ collection.title | json }},
+			{% assign collectionList = '' %}
+			{% for collection in linklists.collection-sidebar.links %}
+				{% assign collectionList = collectionList | append: collection.title | append: ':' | append: collection.url | append: ',' %}
+			{% endfor%}
+			"collections": {{ collectionList | split: ',' | json }},
 			"products": [
 				{% for product in collection.products %}
 				{% assign sizeTags = '' %}
@@ -18,7 +23,7 @@
 					{% endfor %}
 				{
 					"title": {{ product.title | json }},
-					"price": {{ product.price | json }},
+					"price": {{ product.price | money | json }},
 					"img": {{ product.featured_image | img_url: '400x' | json }},
 					"shell": {{ shellTags | split: ',' | json  }},
 					"color":{{ colorTags | split: ',' | json  }},

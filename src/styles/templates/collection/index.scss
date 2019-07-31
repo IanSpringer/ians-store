@@ -1,5 +1,8 @@
 // Helpers
+@import 'loading-takeover';
 @import '../../helpers/index';
+@import 'collection-grid';
+@import 'collection-filters';
 
 * {
 	font-family: 'Nunito', sans-serif;
@@ -21,69 +24,7 @@ h1 {
 	padding: 60px 20px;
 }
 
-.collection-grid {
-	display: flex;
-	flex-wrap: wrap;
-}
 
-.collection-grid-wrap {
-	flex: 1;
-}
 
-.filter-btn {
-	padding: 10px;
-	background: transparent;
-	margin-bottom: 10px;
 
-	&.is-active {
-		background-color: teal;
-		color: white;
-	}
-}
 
-.filter-label {
-	margin-bottom: 14px;
-}
-
-.filter-wrap {
-  display: flex;
-  flex-wrap: wrap;
-
-	label {
-		display: block;
-    margin-bottom: 8px;
-    width: 100%;
-	}
-}
-
-.filter-reset {
-	width: 100%;
-	padding: 10px;
-	margin-top: 20px;
-	background-color: red;
-	color: white;
-	font-size: 16px;
-}
-
-.collection-item {
-	width: calc(33.333% - 40px);
-	margin-right: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	&:nth-child(3n + 3) {
-		margin-right: 0px;
-	}
-
-	img {
-    width: 85%;
-    margin: 0 auto;
-	}
-}
-
-.collection-filters {
-	display: flex;
-	flex-direction: column;
-	width: 250px;
-}
