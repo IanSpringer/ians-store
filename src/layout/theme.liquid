@@ -35,6 +35,12 @@
 
     <!-- Scripts ============================================== -->
 
+      {% if collection %}
+      <script type="text/javascript">
+        window.collectionHandle = "{{ collection.handle }}"
+      </script>
+      {% endif %} 
+
       {%- include 'script-tags', layout: 'theme' -%}
       {%- include 'shop-api' -%}
 
@@ -54,7 +60,7 @@
 
     {% comment %}header{% endcomment %}
 
-    <main role="main" class="oo-main" id="MainContent">
+    <main role="main suhhhh" class="oo-main" id="MainContent">
 
       {{ content_for_layout }}
 

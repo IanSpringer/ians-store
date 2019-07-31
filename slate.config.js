@@ -50,11 +50,17 @@ const rules = [
   //     { loader: 'graphql-tag/loader' }
   //   ]
   // }
+  {
+    test: /\.vue$/,
+    use: 'vue-loader'
+  }
 ];
 
 const alias = {
   styles: path.resolve('./src/styles'),
   scripts: path.resolve('./src/scripts'),
+  'vue$': 'vue/dist/vue.esm.js',
+  components: path.resolve('./src/scripts/components')
 };
 
 module.exports = {
