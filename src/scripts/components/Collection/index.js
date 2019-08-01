@@ -11,18 +11,45 @@ const collection = new Vue({
 		shellFilters: [],
 		sizeFilters: [],
 		filterSelected: false,
+		filterArray: [],
 		collectionList: [],
 		loading: true,
 	},
 	methods: {
 		filterClick: function(filter) {
-			filter.isActive = true;
+			filter.isActive = !filter.isActive;
+			this.productsToShow = [];
+			this.filterArray = [];
+			this.colorFilters.map(item => {
+				if(item.isActive) {
+					this.filterArray.push(item)
+				}
+				return 
+			})
+			this.shellFilters.map(item => {
+				if(item.isActive) {
+					this.filterArray.push(item)
+				}
+				return item
+			})
+			this.sizeFilters.map(item => {
+				if(item.isActive) {
+					this.filterArray.push(item)
+				}
+				return item
+			})
+			this.products.map(product => {
+				this.filterArray.map(filter => {
+					if(product[filter.type].indexOf(filter.value) != -1) {
+						console.log(product)
+						this.productsToShow.push(product)
+					}
+				})
+			})
+			this.filterSelected = this.filterArray.length > 0;
 			if(!this.filterSelected) {
-				this.productsToShow = this.products.filter(product => product[filter.type].indexOf(filter.value) != -1)
-			} else {
-				this.productsToShow = this.productsToShow.filter(product => product[filter.type] == filter.value)
+				this.productsToShow = this.products;
 			}
-			this.filterSelected = true;
 		},
 
 		reset: function() {
@@ -46,16 +73,16 @@ const collection = new Vue({
 	    	item.size.map(item => allSizes.add(item))
 	    	return item
 	    })
-	    Array.from(allColors).map(function(item) {
-	    	const obj = {type: 'color', value: item, isActive: false}
+	    Array.from(allColors).map(function(item, key) {
+	    	const obj = {type: 'color', value: item, isActive: false, key: key}
 	    	return collection.colorFilters.push(obj)
 	    });
-	    Array.from(allShells).map(function(item) {
-	    	const obj = {type: 'shell', value: item, isActive: false}
+	    Array.from(allShells).map(function(item, key) {
+	    	const obj = {type: 'shell', value: item, isActive: false, key: key}
 	    	return collection.shellFilters.push(obj)
 	    });
-	    Array.from(allSizes).map(function(item) {
-	    	const obj = {type: 'size', value: item, isActive: false}
+	    Array.from(allSizes).map(function(item, key) {
+	    	const obj = {type: 'size', value: item, isActive: false, key: key}
 	    	return collection.sizeFilters.push(obj)
 	    });
 		},
