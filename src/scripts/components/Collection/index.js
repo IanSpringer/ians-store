@@ -18,10 +18,8 @@ const collection = new Vue({
 		filterClick: function(filter) {
 			filter.isActive = true;
 			if(!this.filterSelected) {
-				console.log(filter)
 				this.productsToShow = this.products.filter(product => product[filter.type].indexOf(filter.value) != -1)
 			} else {
-				console.log(filter.type, filter.value)
 				this.productsToShow = this.productsToShow.filter(product => product[filter.type] == filter.value)
 			}
 			this.filterSelected = true;
