@@ -12,7 +12,11 @@
 				{% assign sizeTags = '' %}
 				{% assign shellTags = '' %}
 				{% assign colorTags = '' %}
+				{% assign filterTags = '' %}
 					{% for tag in product.tags %}
+						{% if tag contains ':' %}
+							{% assign filterTags = filterTags | append: tag | append: ',' %}
+						{% endif %}
 						{% if tag contains 'size:' %}
 							{% assign sizeTags = sizeTags | append: tag | append: ',' | remove: 'size:' %}
 						{% elsif tag contains 'shell:' %}
@@ -27,7 +31,9 @@
 					"img": {{ product.featured_image | img_url: '400x' | json }},
 					"shell": {{ shellTags | split: ',' | json  }},
 					"color":{{ colorTags | split: ',' | json  }},
-					"size": {{ sizeTags | split: ',' | json  }}
+					"size": {{ sizeTags | split: ',' | json  }},
+					"filterTags": {{ filterTags | split: ',' | json }},
+					"id": {{ product.id | json }}
 				}{% unless forloop.last %},{% endunless %}
 				{% endfor %}
 			]

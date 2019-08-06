@@ -16,38 +16,31 @@ const collection = new Vue({
 		loading: true,
 	},
 	methods: {
-		filterClick: function(filter) {
+		filterProducts: function(filter) {
 			filter.isActive = !filter.isActive;
 			this.productsToShow = [];
-			this.filterArray = [];
-			this.colorFilters.map(item => {
-				if(item.isActive) {
-					this.filterArray.push(item)
-				}
-				return 
-			})
-			this.shellFilters.map(item => {
-				if(item.isActive) {
-					this.filterArray.push(item)
-				}
-				return item
-			})
-			this.sizeFilters.map(item => {
-				if(item.isActive) {
-					this.filterArray.push(item)
-				}
-				return item
-			})
-			this.products.map(product => {
-				this.filterArray.map(filter => {
-					if(product[filter.type].indexOf(filter.value) != -1) {
-						console.log(product)
-						this.productsToShow.push(product)
+			const filterString = `${filter.type}:${filter.value}`;
+			if(filter.isActive) {
+				this.filterArray.push(filterString);
+			} else {
+				const index = this.filterArray.indexOf(filterString)
+				this.filterArray.splice(index, 1);
+			}
+
+			if(this.filterArray.length > 0) {
+				collection.products.map(product => {
+					let filterCount = 0;
+					product.filterTags.map(item => {
+						if(collection.filterArray.indexOf(item) != -1) {
+							filterCount++
+						}
+						return filterCount;
+					})
+					if(filterCount === collection.filterArray.length) {
+						collection.productsToShow.push(product)
 					}
 				})
-			})
-			this.filterSelected = this.filterArray.length > 0;
-			if(!this.filterSelected) {
+			} else {
 				this.productsToShow = this.products;
 			}
 		},
@@ -55,6 +48,7 @@ const collection = new Vue({
 		reset: function() {
 			this.filterSelected = false;
 			this.productsToShow = this.products;
+			this.filterArray = [];
 			this.shellFilters.map(item => item.isActive = false);
 			this.sizeFilters.map(item => item.isActive = false);
 			this.colorFilters.map(item => item.isActive = false);
@@ -74,15 +68,15 @@ const collection = new Vue({
 	    	return item
 	    })
 	    Array.from(allColors).map(function(item, key) {
-	    	const obj = {type: 'color', value: item, isActive: false, key: key}
+	    	const obj = {type: 'color', value: item, isActive: false, key: key, filterString: `color:${item}`}
 	    	return collection.colorFilters.push(obj)
 	    });
 	    Array.from(allShells).map(function(item, key) {
-	    	const obj = {type: 'shell', value: item, isActive: false, key: key}
+	    	const obj = {type: 'shell', value: item, isActive: false, key: key, filterString: `shell:${item}`}
 	    	return collection.shellFilters.push(obj)
 	    });
 	    Array.from(allSizes).map(function(item, key) {
-	    	const obj = {type: 'size', value: item, isActive: false, key: key}
+	    	const obj = {type: 'size', value: item, isActive: false, key: key, filterString: `size:${item}`}
 	    	return collection.sizeFilters.push(obj)
 	    });
 		},
@@ -103,8 +97,8 @@ const collection = new Vue({
 			this.filterSelected = false;
 			this.collectionList = [];
 			this.loading = true;
-			history.pushState(null, null, `https://localhost:3000${handle}`)
-			return this.getCollectionData(handle)
+			history.pushState(null, null, `https://localhost:3000${handle}`);
+			return this.getCollectionData(handle);
 		},
 
 		getCollectionData: function(handle) {
