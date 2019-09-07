@@ -19,4 +19,6 @@
 */
 const dom = {};
 
+dom.imageWrap = '.js-image-wrap';
+
 export default dom;

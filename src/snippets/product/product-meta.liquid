@@ -1,0 +1,26 @@
+{% assign description_array = product.description | split: '========' %}
+
+
+<div class="product-meta">
+  <div class="product-meta__inner">
+  {% for tag in product.tags %}
+    {% if tag contains 'badge::' %}
+    <div class="product-meta__badge {{ tag | remove: 'badge::' | handle | downcase }} sans">{{ tag | remove: 'badge::'}}</div>
+    {% endif %}
+    {% if tag contains 'collection::' %}
+    <h2 class="product__pre-title sans-light">{{ tag | remove: 'collection::' | upcase }}</h2>
+    {% endif %}
+  {% endfor %}
+  <h1 class="product__title sans-light">{{ product.title }}</h1>
+  <div class="product__price-wrap">
+    <span class="product__price">{{ product.price | money_without_trailing_zeros }}</span>
+    {% if product.compare_at_price > product.price %}
+    <span class="product__compare-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+    {% endif %}
+  </div>
+  <div class="product__description-wrap">
+    <h4 class="product__description-label">DESCRIPTION</h4>
+    <p class="product__description-copy">{{ description_array | first | strip_html }}</p>
+  </div>
+  </div>
+</div>

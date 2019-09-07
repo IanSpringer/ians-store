@@ -1,2 +1,23 @@
 // Helpers
 @import '../../helpers/index';
+
+@import './product-info';
+
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+  color: $color-white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+#preview-bar-iframe {
+  display: none;
+}
+
+.template--product {
+  background-color: $color-black;
+}

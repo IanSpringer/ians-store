@@ -32,6 +32,10 @@
 
       {%- include 'style-tags', layout: 'theme' -%}
       {%- include 'css-variables' -%}
+      {%- include 'css-fonts' -%}
+
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+
 
     <!-- Scripts ============================================== -->
 
@@ -45,6 +49,7 @@
   </head>
 
   <body
+    class="template--{{ template.name | handle }}"
     data-template="{{ template.name | handle }}"
     {%- if template.suffix != blank -%}
       data-alternate-template="{{ template.suffix | handle }}"

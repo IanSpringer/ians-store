@@ -1,0 +1,10 @@
+<div class="product-images">
+  <div class="product-images__wrap js-image-wrap">
+    {% for image in product.images %}
+    <img
+      class="product-images__image"
+      alt="{{ image.alt }}"
+      src="{{ image.src | img_url: '421x' }}" alt="">
+    {% endfor %}
+  </div>
+</div>

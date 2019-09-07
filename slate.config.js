@@ -55,6 +55,7 @@ const rules = [
 const alias = {
   styles: path.resolve('./src/styles'),
   scripts: path.resolve('./src/scripts'),
+  components: path.resolve('./src/scripts/components'),
 };
 
 module.exports = {
