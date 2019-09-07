@@ -24,7 +24,9 @@ const slickImages = $el => {
     infinite: true,
     speed: 500,
     fade: true,
-    cssEase: 'linear'
+    cssEase: 'linear',
+    nextArrow: '<button class="slick-arrow next"></button>',
+    prevArrow: '<button class="slick-arrow prev"></button>'
   }
 
   $el.slick(options)

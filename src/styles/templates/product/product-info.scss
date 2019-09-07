@@ -1,60 +1,102 @@
 .product-info {
-  padding: 40px 20px;
 }
 
 .product-info__top {
   display: flex;
+  flex-direction: column;
+
+  @include mq(l) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.product-info__inner {
+  padding: 40px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .product-images {
-  width: calc(100vw - 420px);
   display: flex;
   align-items: center;
+  width: 100%;
+
+  @include mq(l) {
+    width: calc(100% - 420px);
+  }
 }
 
 .product-meta {
-  width: 380px;
+  width: 100%;
+  margin-top: 28px;
+
+  @include mq(l) {
+    width: 380px;
+    margin-top: 0px;
+  }
 }
 
 .product-images__wrap {
   width: 100%;
+  position: relative;
 }
 
 .product-images__image {
   max-width: 431px;
+  width: 75% !important;
   margin: 0 auto;
   display: block !important;
+
+  @include mq(l) {
+    width: 70% !important;
+  }
+
+  @include mq(xl) {
+    width: 95% !important;
+  }
 }
 
 .product__pre-title {
   font-size: 12px;
   letter-spacing: 1px;
+  margin-bottom: 2px;
 
-  @include mq(m) {
+  @include mq(l) {
+    margin-bottom: 6px;
     font-size: 12px;
     letter-spacing: 1.5px;
   }
 }
 
 .product__title {
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: .7px;
-
-  @include mq(m) {
-    font-size: 28px;
-  }
 }
 
 .product__price-wrap {
+  display: flex;
+  align-items: flex-start;
+
   span {
-    font-size: 28px;
+    font-size: 22px;
     letter-spacing: .7px;
+
+    @include mq(l) {
+      font-size: 28px;
+    }
   }
 }
 
 .product__compare-price {
   text-decoration: line-through;
   margin-left: 8px;
+  font-size: 14px !important;
+  padding-top: 3px;
+
+  @include mq(l) {
+    font-size: 18px !important;
+  }
 }
 
 .product-meta__badge {
@@ -84,7 +126,7 @@
   padding: 6px 0px;
   border-top: 1px solid $color-white-border;
   border-bottom: 1px solid $color-white-border;
-  margin-top: 30px;
+  margin-top: 24px;
 
   img {
     width: 12px;
@@ -99,25 +141,49 @@
 .product__controls {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 20px 0px;
   border-top: 1px solid $color-white-border;
   margin-top: 20px;
+
+  @include mq(l) {
+    flex-direction: row;
+  }
 }
 
 .product__controls-label {
   font-size: 11px;
   letter-spacing: 2px;
   margin-right: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+
+  @include mq(l) {
+    width: auto;
+    display: inline-block;
+  }
 }
 
 .product__swatch {
   padding: 0px;
   background: transparent;
   border: 0;
-  width: 33px;
-  margin: 0px 5px;
+  width: auto;
   position: relative;
   outline: none;
+  margin-right: 10px;
+
+  img {
+    width: 42px;
+
+    @include mq(l) {
+      width: 33px;
+    }
+  }
+
+  @include mq(l) {
+    margin: 0px 5px;
+  }
 
   .fa-check {
     opacity: 0;
@@ -140,6 +206,15 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  order: 1;
+  width: 100%;
+  margin-top: 12px;
+
+  @include mq(l) {
+    order: 0;
+    width: auto;
+    margin-top: 0px;
+  }
 
   button {
     border-radius: 20px;
@@ -150,6 +225,11 @@
     padding: 12px 20px;
     display: block;
     border: 0;
+    width: 100%;
+
+    @include mq(l) {
+      width: auto;
+    }
   }
 }
 
@@ -157,10 +237,21 @@
 }
 
 .product__options-wrap {
-  width: 25%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  @include mq(l) {
+    justify-content: flex-end;
+    width: 33%;
+    margin-bottom: 0px;
+  }
+
+  &.style {
+    justify-content: flex-start;
+  }
 }
 
 .product__option {
@@ -171,13 +262,79 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  height: 33px;
-  width: 33px;
-  margin: 0px 5px;
   outline: none;
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+
+  @include mq(l) {
+    margin: 0px 5px;
+    height: 33px;
+    width: 33px;
+  }
 
   &.is-active {
     background-color: $color-white;
     color: $color-black;
+  }
+}
+
+.slick-arrow {
+  background: transparent;
+  border: 0;
+  width: 45px;
+  height: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 10;
+
+  &:before {
+    content: '';
+    position: absolute;
+    border-top: 1px solid $color-white;
+    border-right: 1px solid $color-white;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+
+    @include mq(l) {
+      top: calc(50% - 13px);
+      left: calc(50% - 13px);
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &.next {
+    right: -10px !important;
+
+    @include mq(l) {
+      right: 20px !important;
+    }
+    @include mq(t) {
+      right: 30px !important;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+  }
+
+  &.prev {
+    left: -10px !important;
+
+    @include mq(l) {
+      left: 20px !important;
+    }
+
+    @include mq(t) {
+      left: 30px !important;
+    }
+
+    &:before {
+      transform: rotate(-135deg);
+    }
   }
 }

@@ -1,45 +1,35 @@
-[![Build Status](https://travis-ci.org/Shopify/starter-theme.svg?branch=master)](https://travis-ci.org/Shopify/starter-theme)
+<h1>Slate PDP by Ian Springer</h1>
 
-# Starter Theme
+<h3>This PDP was built using Shopify's recommended workflow tool Slate.</h3>
 
-> **Starter Theme and [Slate v1](https://github.com/Shopify/slate) are currently in beta!** You should expect potentially breaking changes between updates and more bugs than a finalized release. Slate v1.0 has not yet been tested on Windows.
+<p>Below is a list of files built from scratch by the author of this repository</p>
 
-Starter Theme represents the Shopify Themes Team's opinionated starting point for new Slate theme projects. It strives to include up-to-date best practices and solutions that we have deemed needed for the majority of themes we build. It is a reflection of what’s possible when building a theme!
+<label>Javascript</label>
+<ul>
+    <li>/src/scripts/common/Dom.js</li>
+    <li>/src/scripts/components/Cart/index.js</li>
+    <li>/src/scripts/components/Product/index.js</li>
+    <li>/src/scripts/components/Product/state.js</li>
+</ul>
 
-## Intentional lack of styles
+<label>SCSS</label>
+<ul>
+    <li>/src/styles/product/product-info.scss</li>
+    <li>/src/styles/product/product-info.scss</li>
+</ul>
 
-When launching Starter Theme for the first time, you may notice a lack of CSS styles. Is Starter Theme broken? Definitely not! Keep in mind this was done intentionally. Starter Theme is not a framework but rather a starting point for your project. It contains all the files the Shopify Themes team considers to be the bare essentials to building a Shopify theme.
+<label>Liquid</label>
+<ul>
+    <li>/src/templates/product.liquid</li>
+    <li>/src/snippets/product/product-controls</li>
+    <li>/src/snippets/product/product-images</li>
+    <li>/src/snippets/product/product-info</li>
+    <li>/src/snippets/product/product-meta</li>
 
-For templates and snippets, standard Liquid tags and logic have been included with little to no markup, classes, or other code that you will need to remove. The [`src/styles/theme.scss`](https://github.com/Shopify/starter-theme/blob/master/src/assets/styles/theme.scss) file contains extremely limited styling to not get in the way of developers' CSS preferences. The JavaScript files contain most of our [helper scripts](https://github.com/Shopify/theme-scripts/tree/master/packages) and [lazysizes](https://github.com/aFarkas/lazysizes) for responsive image lazy loading.
+</ul>
 
-## System requirements
+<h3>Notes</h3>
 
-You'll want to ensure you have the following already installed on your local machine before getting started with Starter theme:
+<p>I took some liberties with the image wrapper as it wasn't quite clear what the interaction was supposed to be here. This simplified version is a basic carousel with fade-in effect</p>
 
-- **Node:** The current LTS (long-term support) release. We like to use a Node Version Manager like [NVM](https://github.com/creationix/nvm).
-
-- **NPM 5+ or Yarn:** Both of these package managers have [ups and downs](https://blog.risingstack.com/yarn-vs-npm-node-js-package-managers/), choose whichever you prefer. Follow the installation instructions [for Yarn](https://yarnpkg.com/en/docs/install) or [NPM](https://www.npmjs.com/get-npm) to make sure you're using the latest version.
-
-## Getting started
-
-To get started with Starter Theme, run the following command in your terminal:
-
-```
-$ yarn create slate-theme my-new-theme
-```
-
-For more information on connecting your new project with a Shopify store, see the [Slate docs](https://github.com/Shopify/slate/wiki/3.-Connect-to-your-store).
-
-## Contributing
-
-For help on setting up the repository locally, building, testing, and contributing
-please see [CONTRIBUTING.md](https://github.com/Shopify/starter-theme/blob/master/CONTRIBUTING.md).
-
-## Code of Conduct
-
-All developers who wish to contribute through code or issues, take a look at the
-[Code of Conduct](https://github.com/Shopify/starter-theme/blob/master/CODE_OF_CONDUCT.md).
-
-## License
-
-Copyright © 2018 Shopify. See [LICENSE](https://github.com/Shopify/starter-theme/blob/master/LICENSE) for further details.
+<p>Variant option selectors + add to cart functionality is working. When selecting a combination of options and adding to bag, you should see a success message with your selected product, followed by your updated Cart instance from inside the Javascript console. The code that handles all of this is inside of /src/scripts/Product/ and /src/scripts/Cart/</p>
