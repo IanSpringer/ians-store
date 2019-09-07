@@ -339,3 +339,26 @@
     }
   }
 }
+
+.product__model-wrap {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  display: none;
+
+  @include mq(l) {
+    display: block
+  }
+}
+
+.product__model-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  display: block;
+}
+
+.product__model {
+  font-size: 26px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
