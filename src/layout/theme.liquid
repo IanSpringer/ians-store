@@ -41,6 +41,7 @@
 
       {%- include 'script-tags', layout: 'theme' -%}
       {%- include 'shop-api' -%}
+      <script src="https://kit.fontawesome.com/87a01a5537.js"></script>
 
     {% if template.directory == 'customers' %}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
@@ -67,5 +68,12 @@
 
     {% comment %}footer{% endcomment %}
 
+    <script  type="text/javascript">
+      window.product = {
+        title: '{{ product.title }}',
+        handle: '{{ product.handle }}'
+      }
+    </script>
   </body>
+
 </html>

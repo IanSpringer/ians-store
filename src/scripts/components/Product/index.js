@@ -1,5 +1,10 @@
 import slick from 'slick-carousel';
-import dom from 'scripts/common/Dom.js'
+import dom from 'scripts/common/Dom.js';
+
+const fetchProductData = handle => {
+  $.get(`/products/${handle}.json`)
+    .then(data => console.log('data', data));
+}
 
 const slickImages = $el => {
   const options = {
@@ -19,7 +24,8 @@ const bindActions = () => {
 }
 
 const init = () => {
-  bindActions()
+  bindActions();
+  fetchProductData(window.product.handle);
 }
 
 export default init;

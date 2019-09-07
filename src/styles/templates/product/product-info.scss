@@ -7,15 +7,23 @@
 }
 
 .product-images {
-  width: calc(100vw - 380px);
+  width: calc(100vw - 420px);
+  display: flex;
+  align-items: center;
 }
 
 .product-meta {
   width: 380px;
 }
 
+.product-images__wrap {
+  width: 100%;
+}
+
 .product-images__image {
   max-width: 431px;
+  margin: 0 auto;
+  display: block !important;
 }
 
 .product__pre-title {
@@ -46,6 +54,7 @@
 
 .product__compare-price {
   text-decoration: line-through;
+  margin-left: 8px;
 }
 
 .product-meta__badge {
@@ -65,4 +74,103 @@
 .product__description-label {
   font-size: 14px;
   line-height: 22px;
+}
+
+.product__description-wrap {
+  margin-top: 30px;
+}
+
+.product__reviews {
+  padding: 6px 0px;
+  border-top: 1px solid $color-white-border;
+  border-bottom: 1px solid $color-white-border;
+  margin-top: 30px;
+
+  img {
+    width: 12px;
+  }
+}
+
+.product__reviews-label {
+  font-size: 12px;
+  margin-left: 12px;
+}
+
+.product__controls {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+  border-top: 1px solid $color-white-border;
+  margin-top: 20px;
+}
+
+.product__controls-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-right: 16px;
+}
+
+.product__swatch {
+  padding: 0px;
+  background: transparent;
+  border: 0;
+  width: 33px;
+  margin: 0px 5px;
+  position: relative;
+
+  .fa-check {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  &.is-active {
+    .fa-check {
+      opacity: 1;
+    }
+  }
+}
+
+.product__atc-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  button {
+    border-radius: 20px;
+    background-color: $color-white;
+    font-size: 14px;
+    color: $color-black;
+    letter-spacing: 2px;
+    padding: 12px 20px;
+    display: block;
+    border: 0;
+  }
+}
+
+.product__atc {
+}
+
+.product__options-wrap {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.product__option {
+  color: $color-white;
+  border: 1px solid $color-white;
+  background-color: $color-black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 33px;
+  width: 33px;
+  margin: 0px 5px;
 }

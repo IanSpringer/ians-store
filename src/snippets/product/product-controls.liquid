@@ -1,0 +1,35 @@
+<div class="product__controls">
+  {% for option in product.options_with_values %}
+    {% if option.name == 'Style' %}
+    <div class="product__options-wrap">
+      <span class="product__controls-label">CHOOSE YOUR STYLE</span>
+      {% for value in option.values %}
+        {% assign extra_classes = ' is-active' %}
+        {% unless forloop.first %}
+        {% assign extra_classes = '' %}
+        {% endunless %}
+        {% capture swatch_image %}{{ value }}.png{% endcapture %}
+       <button class="js-product-option product__swatch{{ extra_classes }}" data-value="{{ value }}" type=""><img src="{{ swatch_image | file_url }}" alt=""><i class="fas fa-check"></i></button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+  <div class="product__atc-wrap">
+    <button type="js-atc product__atc sans-light">PURCHASE</button>
+  </div>
+  {% for option in product.options_with_values %}
+    {% if option.name == 'Size' %}
+    <div class="product__options-wrap">
+      <span class="product__controls-label">CHOOSE YOUR SIZE</span>
+      {% for value in option.values %}
+        {% capture swatch_image %}{{ value }}.png{% endcapture %}
+        {% assign extra_classes = ' is-active' %}
+        {% unless forloop.first %}
+        {% assign extra_classes = '' %}
+        {% endunless %}
+       <button class="js-product-option product__option{{ extra_classes }}" data-value="{{ value }}" type="">{{ value }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
