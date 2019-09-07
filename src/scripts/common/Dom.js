@@ -20,5 +20,8 @@
 const dom = {};
 
 dom.imageWrap = '.js-image-wrap';
+dom.productOption = '.js-product-option';
+dom.optionsWrap = '.js-options-wrap';
+dom.atc = '.js-atc';
 
 export default dom;

@@ -117,6 +117,7 @@
   width: 33px;
   margin: 0px 5px;
   position: relative;
+  outline: none;
 
   .fa-check {
     opacity: 0;
@@ -173,4 +174,10 @@
   height: 33px;
   width: 33px;
   margin: 0px 5px;
+  outline: none;
+
+  &.is-active {
+    background-color: $color-white;
+    color: $color-black;
+  }
 }

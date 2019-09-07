@@ -1,7 +1,7 @@
 <div class="product__controls">
   {% for option in product.options_with_values %}
     {% if option.name == 'Style' %}
-    <div class="product__options-wrap">
+    <div class="product__options-wrap js-options-wrap">
       <span class="product__controls-label">CHOOSE YOUR STYLE</span>
       {% for value in option.values %}
         {% assign extra_classes = ' is-active' %}
@@ -15,11 +15,11 @@
     {% endif %}
   {% endfor %}
   <div class="product__atc-wrap">
-    <button type="js-atc product__atc sans-light">PURCHASE</button>
+    <button class="js-atc product__atc sans-light">PURCHASE</button>
   </div>
   {% for option in product.options_with_values %}
     {% if option.name == 'Size' %}
-    <div class="product__options-wrap">
+    <div class="product__options-wrap js-options-wrap">
       <span class="product__controls-label">CHOOSE YOUR SIZE</span>
       {% for value in option.values %}
         {% capture swatch_image %}{{ value }}.png{% endcapture %}
