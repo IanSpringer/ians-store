@@ -11,6 +11,18 @@ export const getData = () => {
 	          host
 	        }
 	      }
+        collectionByHandle(handle: "mens-shoes") {
+          products(first: 250) {
+            edges {
+              node {
+                id
+                title
+                description
+                tags
+              }
+            }
+          }
+        }
 	    }
 	   `
 
