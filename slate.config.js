@@ -6,6 +6,7 @@
 const path = require('path');
 const { ProvidePlugin } = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 // const graphqlLoader = require('graphql-tag/loader');
 const { minLegacySingleScriptsPlugin, minLegacyMegaScriptPlugin } = require('./legacy-config');
 
@@ -40,6 +41,8 @@ const plugins = [
   ),
   minLegacyMegaScriptPlugin,
   minLegacySingleScriptsPlugin,
+  new VueLoaderPlugin()
+
 ];
 
 const rules = [

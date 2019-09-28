@@ -1,10 +1,8 @@
 import 'styles/templates/collection/index.scss';
-import Collection from 'components/Collection';
-import { getData } from 'scripts/vue/graphql/collections.js'
+import { initVue } from 'components/Collection';
 
-Collection()
-getData();
-
-document.addEventListener('DOMContentLoaded', () => {});
+document.addEventListener('DOMContentLoaded', () => {
+	initVue();
+});
 
 window.addEventListener('load', () => {});
