@@ -22,9 +22,10 @@
     },
     created () {
         fetchCollectionData('mens-shoes')
-          .then(data => console.log(data))
-          .then(data => {
-            const { edges } = data;
+          .then(res => res)
+          .then(res => {
+            const  products  = res.data.collectionByHandle.products
+            console.log(products.edges.map(item => item.node))
           })
     }
   }
