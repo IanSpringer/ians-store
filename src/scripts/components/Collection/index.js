@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import CollectionTemplate  from 'scripts/vue/components/collection.vue';
+import CollectionTemplate  from 'scripts/vue/components/collections/app.vue';
 
 export const initVue = () => {
 	new Vue({

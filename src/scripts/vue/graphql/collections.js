@@ -7,7 +7,7 @@ const resource = `https://ian-springers-personal-store.myshopify.com/api/2019-07
 // const key = `6ab097bf300698464598157f0cb0a31a`
 // const resource = `https://ian-springers-personal-store.myshopify.com/admin/api/2019-07/graphql.json`
 
-export const fetchCollectionData = (handle, limit = 250) => {
+export const fetchCollectionData = (handle, limit = 250) =>  {
   return new Promise((resolve, reject) => {
   	const query = `
   	    {
@@ -19,7 +19,19 @@ export const fetchCollectionData = (handle, limit = 250) => {
                   title
                   handle
                   description
+                  createdAt
                   tags
+                  variants(first: 1) {
+                    edges {
+                      node {
+                        title
+                        image {
+                          src
+                        }
+                        price
+                      }
+                    }
+                  }
                 }
               }
             }
